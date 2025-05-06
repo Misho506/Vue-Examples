@@ -44,7 +44,7 @@ body {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     color: #2c3e50;
-    background-color: #f4f4f4; /* Light gray background for the whole page */
+    background-color: black; /* Light gray background for the whole page */
 }
 
 </style>
