@@ -4,6 +4,7 @@ import { storeToRefs } from 'pinia'
 import { useTodoListStore } from '@/stores/todoListStore'
 import { XCircle, Plus, Check, ListTodo } from 'lucide-vue-next';
 import Container from '../components/Container.vue'
+import type { TodoItem } from '@/utils/types'
 
 const todoStore = useTodoListStore()
 const { allTodos, completedTodos, incompleteTodos } = storeToRefs(todoStore)
@@ -28,14 +29,14 @@ const filters = ref([
   'Completed'
 ])
 
-const addNewItem = (item) => {
+const addNewItem = (item: TodoItem) => {
   if (newItemTitle.value.trim().length > 0) {
     addTodoItem({id: todos.value.length ,title: newItemTitle.value.trim(), completed: false});
     newItemTitle.value = '';
   }
 }
 
-const setFilter = (filter)  => {
+const setFilter = (filter: 'All' | 'Active' | 'Completed')  => {
   selectedFilter.value = filter;
 }
 
@@ -46,7 +47,7 @@ const setFilter = (filter)  => {
     <div class="todo-list">
       <div class="p-5 border-b border-white/20 flex items-center justify-between">
         <div class="flex items-center">
-          <ListTodo size="24" />
+          <ListTodo :size="24" />
           <h1 class="text-xl ml-4 font-semibold">My Tasks</h1>
         </div>
         <span class="bg-blue-600 px-3 py-1 rounded-full text-sm font-medium">
@@ -57,7 +58,7 @@ const setFilter = (filter)  => {
         <button
           v-for="filter in filters"
           :key="filter"
-          @click="setFilter(filter)"
+          @click="setFilter(filter as 'All' | 'Active' | 'Completed')"
           class="filter-btn p-2 m-2 rounded action-button"
         >
           {{ filter }}
@@ -87,7 +88,7 @@ const setFilter = (filter)  => {
         <div @click="updateTodoItem({...todo, completed: !todo.completed})"
               class="cursor-pointer p-1 flex items-center"
           >
-            <Check v-if="todo.completed" size="20" class="text-green-400" />
+            <Check v-if="todo.completed" :size="20" class="text-green-400" />
             <div v-else class="w-5 h-5 border-2 border-white/40 rounded-sm"></div>
           </div>
           <span :class="['align-middle', { 'line-through': todo.completed }]"
@@ -101,7 +102,7 @@ const setFilter = (filter)  => {
             @click="removeTodoItem(todo.id)"
             class="text-white/40 hover:text-red-400 transition-colors justify-self-end p-1"
           >
-            <XCircle size="20" />
+            <XCircle :size="20" />
           </button>
         </li>
       </ul>

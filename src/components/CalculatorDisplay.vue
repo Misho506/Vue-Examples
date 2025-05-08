@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import { defineProps, onUpdated } from 'vue';
 
 // Props of CalculatorDisplay component

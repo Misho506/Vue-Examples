@@ -1,10 +1,11 @@
 <script setup lang="ts">
 import { onMounted, onBeforeUnmount } from 'vue';
-import CalculatorDisplay from '../components/CalculatorDisplay.vue';
-import CalculatorKeypad from '../components/CalculatorKeypad.vue';
-import Container from '../components/Container.vue'
+import CalculatorDisplay from '@/components/CalculatorDisplay.vue';
+import CalculatorKeypad from '@/components/CalculatorKeypad.vue';
+import Container from '@/components/Container.vue'
 import { useCalculatorStore } from '@/stores/calculatorStore';
 import { keyMap } from '@/utils/calculatorData';
+import type { CalculatorKeyPayload } from '@/utils/types';
 
 // --- Lifecycle Hooks ---
 onMounted(() => {
@@ -21,20 +22,20 @@ onBeforeUnmount(() => {
 const calculatorStore = useCalculatorStore();
 
 // Handler for keypad events
-const handleKeypadPress = (payload) => {
+const handleKeypadPress = (payload: CalculatorKeyPayload) => {
   const { label, type } = payload;
 
   if (type === 'number') {
-    calculatorStore.handleNumber(label);
+    calculatorStore.handleNumber(label as number);
   } else if (type === 'operator') {
-    calculatorStore.handleOperator(label);
+    calculatorStore.handleOperator(label as string);
   } else if (type === 'special') {
-    calculatorStore.handleSpecial(label); // Pass the label (e.g., 'AC', '=')
+    calculatorStore.handleSpecial(label as string); // Pass the label (e.g., 'AC', '=')
   }
 }
 
 // --- Bonus: Keyboard Support ---
-const handleKeyPress = (event) => {
+const handleKeyPress = (event: KeyboardEvent) => {
   const key = event.key;
   if (keyMap[key]) {
     handleKeypadPress(keyMap[key]);

@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import CalculatorButton from './CalculatorButton.vue';
 import { defineEmits } from 'vue';
 import { buttons } from '../utils/calculatorData';
@@ -6,7 +6,7 @@ import { buttons } from '../utils/calculatorData';
 const emit = defineEmits(['key-press']);
 
 
-const handleButtonClick = (payload) => {
+const handleButtonClick = (payload: string) => {
   // Re-emit the event from CalculatorButton upwards
   // Can also be named differently if needed, e.g., 'keypad-event'
   console.log('Keypad received button click:', payload);
@@ -21,7 +21,7 @@ const handleButtonClick = (payload) => {
     <CalculatorButton
       v-for="button in buttons"
       :key="button.label"
-      v-bind:label="button.label" 
+      v-bind:label="button.label"
       :type="button.type"
       :is-wide="button.isWide"
       :disabled="button.disabled"
