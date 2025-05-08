@@ -1,12 +1,6 @@
 import { defineStore } from 'pinia'
 import { ref, computed } from 'vue'
-
-// Define the structure of a todo item
-export interface TodoItem {
-  id: number | string
-  title: string
-  completed: boolean
-}
+import type { TodoItem } from '@/utils/types'
 
 // This is your initial data source
 const todoListData: TodoItem[] = [

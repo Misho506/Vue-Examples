@@ -84,7 +84,6 @@ export const useCalculatorStore = defineStore('calculator', () => {
   }
 
   const handleSpecial = (type: string): void => {
-    console.log('Action: handleSpecial', type)
     if (type === 'AC') {
       clear()
     } else if (type === '=') {
