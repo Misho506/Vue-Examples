@@ -1,18 +1,17 @@
 <script setup lang="ts"></script>
 <template>
-  <header class="app-header">
+  <header class="app-header w-full">
     <div class="links-container">
-      <router-link class="link p-2 rounded " to="/">Calculator</router-link>
-      <router-link class="link p-2 rounded " to="/todoList">Todo List</router-link>
+      <router-link class="link p-2 rounded hover:text-blue-300 transition-colors" to="/">Calculator</router-link>
+      <router-link class="link p-2 rounded hover:text-blue-300 transition-colors" to="/todoList">Todo List</router-link>
     </div>
   </header>
 </template>
 <style scoped>
 .app-header {
-  padding: 10px; /* Padding around the header */
-  text-align: center; /* Center the text */
-  background: #0079bf;
-  background: radial-gradient(circle,rgba(0, 121, 191, 1) 0%, rgba(0, 101, 189, 1) 45%, rgba(3, 0, 0, 1) 100%);
+  padding: 10px;
+  text-align: center;
+  box-shadow: 0 0 10px 0px white;
 
   .links-container {
     display: flex; /* Use flexbox for layout */

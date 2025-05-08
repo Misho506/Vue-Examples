@@ -1,11 +1,14 @@
 <script setup lang="ts">
+import Container from '../components/Container.vue'
 console.log('Calculator component loaded!');
 </script>
 
 <template>
-  <div class="calculator-container">
-    <h1 class="title">Vue Calculator</h1>
-  </div>
+  <Container>
+    <div class="calculator-container">
+      <h1 class="title">Vue Calculator</h1>
+    </div>
+  </Container>
 </template>
 
 <style>

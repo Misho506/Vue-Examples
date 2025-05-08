@@ -11,7 +11,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <div id="app-layout">
+  <div id="app-layout" class="min-h-screen bg-gradient-to-br from-indigo-900 via-blue-800 to-indigo-900 text-white flex flex-col items-center">
     <CustomHeader />
     <main>
       <!-- RouterView will render the component based on the current URL -->
@@ -43,8 +43,6 @@ body {
     font-family: Avenir, Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    color: #2c3e50;
-    background-color: black; /* Light gray background for the whole page */
 }
 
 </style>
